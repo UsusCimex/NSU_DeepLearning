@@ -28,7 +28,7 @@ class NeuralNetwork:
         epsilon = 1e-7  # Малая константа для стабилизации логарифма
         return -np.mean(y_true * np.log(y_pred + epsilon) + (1 - y_true) * np.log(1 - y_pred + epsilon))
     
-    def forward(self, X):
+    def forward(self, X, change_value=True):
         # Прямой проход
         activation = X
         activations = [X]  # список для хранения всех активаций
@@ -40,7 +40,8 @@ class NeuralNetwork:
             activation = self.relu(z) if b is not self.biases[-1] else self.sigmoid(z)
             activations.append(activation)
 
-        self.activations, self.zs = activations, zs
+        if change_value:
+            self.activations, self.zs = activations, zs
         return activations[-1]
 
     def backprop(self, X, y, learning_rate):
@@ -78,9 +79,13 @@ class NeuralNetwork:
                     visualization_func(self, X, y, i, loss)
 
             self.backprop(X, y, learning_rate)
+        
+        print(f"Iteration {iterations}, Loss: {loss_history[-1]}")
+        if visualization_func is not None:
+            visualization_func(self, X, y, iterations, loss_history[-1])
         return loss_history
     
     def predict(self, X):
         # Предсказание
-        y_pred = self.forward(X)
+        y_pred = self.forward(X, change_value=False)
         return (y_pred > 0.5).astype(int)

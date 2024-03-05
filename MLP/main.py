@@ -14,8 +14,8 @@ def main():
 
     dataset_choice = 'spiral'
     points = 300
-    noise = 0.0
-    interations = 16000
+    noise = 0
+    interations = 20000
     try:
         X, Y = get_dataset(dataset_choice, points, noise)
     except ValueError as e:
@@ -30,9 +30,6 @@ def main():
 
     # После обучения нейросети
     loss_history = nn.train(X, Y, iterations=interations, learning_rate=1.2, visualization_func=plot_decision_boundary)
-    
-    # Визуализируем результаты
-    plot_decision_boundary(nn, X, Y.ravel(), interations, loss_history[-1])
     visualize_loss(loss_history)
 
 if __name__ == "__main__":
