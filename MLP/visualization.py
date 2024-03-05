@@ -15,7 +15,7 @@ def plot_decision_boundary(model, X, y, iteration, loss):
                          np.arange(y_min, y_max, 0.01))
 
     # Прогнозируем классы для каждой точки в сетке
-    Z = model.predict(np.c_[xx.ravel(), yy.ravel()], change_value=False)
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
 
     # Визуализируем границы

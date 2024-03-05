@@ -12,10 +12,10 @@ def main():
     # noise = float(input("Разброс точек: "))
     # interations = int(input("Введите количество итераций в обучении: "))
 
-    dataset_choice = 'xor'
+    dataset_choice = 'spiral'
     points = 300
     noise = 0.0
-    interations = 1000
+    interations = 16000
     try:
         X, Y = get_dataset(dataset_choice, points, noise)
     except ValueError as e:
@@ -26,7 +26,7 @@ def main():
     Y = Y.reshape(Y.shape[0], 1)
 
     # Создаем и обучаем нейросеть
-    nn = NeuralNetwork(input_size=2, hidden_size=4, output_size=1)
+    nn = NeuralNetwork([2,8,8,8,1])
 
     # После обучения нейросети
     loss_history = nn.train(X, Y, iterations=interations, learning_rate=1.2, visualization_func=plot_decision_boundary)
