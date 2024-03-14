@@ -1,9 +1,9 @@
 import numpy as np
 
-import activation_func.relu as relu
-import activation_func.sigmoid as sigmoid
-import activation_func.step as step
-import activation_func.tanh as tanh
+import perceptrons.activation_func.relu as relu
+import perceptrons.activation_func.sigmoid as sigmoid
+import perceptrons.activation_func.step as step
+import perceptrons.activation_func.tanh as tanh
 
 class MultilayeredPerceptron:
     def __init__(self, layers_sizes, learning_rate, activation):
