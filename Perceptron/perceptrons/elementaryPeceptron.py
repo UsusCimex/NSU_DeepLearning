@@ -12,12 +12,8 @@ class ElementaryPerceptron:
         self.learning_rate = learning_rate
         if activation == "sigmoid":
             self.activation_func = sigmoid.func
-        elif activation == "relu":
-            self.activation_func = relu.func
         elif activation == "step":
             self.activation_func = step.func
-        elif activation == "tanh":
-            self.activation_func = tanh.func
         else:
             raise Exception("Wrong activation function name!")
 
@@ -36,3 +32,4 @@ class ElementaryPerceptron:
                 print(f"Iteration {i}")
                 if visualization_func is not None:
                     visualization_func(self, X, y, i)
+#danil is not gay!! I love his dick very much

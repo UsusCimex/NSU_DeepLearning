@@ -14,9 +14,9 @@ def main():
     # iterations = int(input("Введите количество итераций в обучении: "))
 
     dataset_choice = 'cross'
-    points = 150
+    points = 200
     noise = 0
-    iterations = 100
+    iterations = 44444
     try:
         X, y = get_dataset(dataset_choice, points, noise)
     except ValueError as e:
@@ -25,11 +25,11 @@ def main():
     # plot_data(X,y)
 
     # Создаем и обучаем нейросеть
-    perc = Perceptron([2,8,8,8,1], 0.4, "sigmoid")
+    perc = Perceptron([2,8,8,1], 1.1, "sigmoid")
     # perc = ElementaryPerceptron(0.4, "sigmoid")
 
     # После обучения нейросети
-    loss_history = perc.fit(X, y, iterations=iterations, visualization_func=plot_decision_boundary, count_graphics=1)
+    loss_history = perc.fit(X, y, iterations=iterations, visualization_func=plot_decision_boundary, count_graphics=4)
     visualize_loss(loss_history)
 
 if __name__ == "__main__":
