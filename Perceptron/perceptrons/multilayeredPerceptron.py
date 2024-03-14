@@ -1,17 +1,25 @@
 import numpy as np
 
-class Perceptron:
+import activation_func.relu as relu
+import activation_func.sigmoid as sigmoid
+import activation_func.step as step
+import activation_func.tanh as tanh
+
+class MultilayeredPerceptron:
     def __init__(self, layers_sizes, learning_rate, activation):
         # Инициализация параметров сети
         if activation == "sigmoid":
-            self.activation_func = self.sigmoid
-            self.activation_func_prime = self.sigmoid_prime
+            self.activation_func = sigmoid.func
+            self.activation_func_prime = sigmoid.prime
         elif activation == "relu":
-            self.activation_func = self.relu
-            self.activation_func_prime = self.relu_prime
+            self.activation_func = relu.func
+            self.activation_func_prime = relu.prime
         elif activation == "step":
-            self.activation_func = self.step
+            self.activation_func = step.func
             # Замечание: у ступенчатой функции нет производной
+        elif activation == "tanh":
+            self.activation_func = tanh.func
+            self.activation_func_prime = tanh.prime
         else:
             raise Exception("Wrong activation function name!")
 
@@ -20,26 +28,6 @@ class Perceptron:
         self.biases = [0 for _ in layers_sizes[1:]]
         self.weights = [np.random.randn(y, x) for x, y in zip(layers_sizes[:-1], layers_sizes[1:])]
 
-    def sigmoid(self, z):
-        # Сигмоидальная функция активации
-        return 1 / (1 + np.exp(-z))
-    
-    def sigmoid_prime(self, z):
-        # Производная сигмоидальной функции активации
-        return self.sigmoid(z) * (1 - self.sigmoid(z))
-
-    def step(self, z):
-        # Ступенчатая функция активации
-        return np.where(z >= 0, 1, 0)
-
-    def relu(self, z):
-        # ReLU функция активации
-        return np.maximum(0, z)
-
-    def relu_prime(self, z):
-        # Производная ReLU функции активации
-        return (z > 0).astype(float)
-    
     def forward(self, X):
         # Прямое распространение
         activations = [X.T]
@@ -82,14 +70,14 @@ class Perceptron:
         # print("X:" + str(X.shape))
         # print("y:" + str(y.shape))
         loss_history = []
-        for i in range(iterations):
+        for i in range(iterations + 1):
             # Прямое распространение
             activations, zs = self.forward(X)
             # Вычисление потерь
             loss = self.loss(y, activations[-1])
             loss_history.append(loss)
 
-            if i % (iterations // count_graphics) == 0 or i == iterations - 1:
+            if i != 0 and i % (iterations // count_graphics) == 0:
                 print(f"Iteration {i}, Loss: {loss}")
                 if visualization_func is not None:
                     visualization_func(self, X, y, i, loss)
