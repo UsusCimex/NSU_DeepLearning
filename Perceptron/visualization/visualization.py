@@ -1,7 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.colors import LinearSegmentedColormap
 
-def plot_decision_boundary(model, X, y, iteration, loss):
+cm = LinearSegmentedColormap.from_list('blue_red', ['red', 'blue'], N=2)
+
+def plot_decision_boundary(model, X, y, iteration=None, loss=None):
     # Задаем диапазон значений и сетку
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
@@ -14,7 +17,7 @@ def plot_decision_boundary(model, X, y, iteration, loss):
 
     # Plotting
     plt.contourf(xx, yy, Z, alpha=0.8, levels=np.linspace(Z.min(), Z.max(), 3), cmap=plt.cm.RdBu)
-    plt.scatter(X[:, 0], X[:, 1], c=y, s=20, cmap=plt.cm.RdBu, edgecolors='k')
+    plt.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap=cm, edgecolors='k')
     plt.title(f"Iteration {iteration}, Loss: {loss}")
     plt.show()
 
@@ -29,3 +32,11 @@ def visualize_loss(loss_history):
         plt.show()
     else:
         print("Loss history is empty or not provided.")
+
+def plot_data(X, y):
+    plt.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap=cm, edgecolors='k')
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.title('Data points')
+    plt.legend()
+    plt.show()

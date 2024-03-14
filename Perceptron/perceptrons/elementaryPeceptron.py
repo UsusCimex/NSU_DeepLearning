@@ -6,23 +6,33 @@ import perceptrons.activation_func.step as step
 import perceptrons.activation_func.tanh as tanh
 
 class ElementaryPerceptron:
-    def __init__(self, input_size, learning_rate=0.1, activation='step'):
-        self.weights = np.random.randn(input_size + 1)  # +1 for the bias
+    def __init__(self, learning_rate=0.1, activation='step'):
+        self.weights = np.random.randn(2)
+        self.bias = 0
         self.learning_rate = learning_rate
-        if activation == 'step':
-            self.activation_func = step_function
-        elif activation == 'sigmoid':
-            self.activation_func = self.sigmoid
+        if activation == "sigmoid":
+            self.activation_func = sigmoid.func
+        elif activation == "relu":
+            self.activation_func = relu.func
+        elif activation == "step":
+            self.activation_func = step.func
+        elif activation == "tanh":
+            self.activation_func = tanh.func
         else:
-            raise ValueError("Activation function not supported.")
+            raise Exception("Wrong activation function name!")
 
-    def predict(self, inputs):
-        summation = np.dot(inputs, self.weights[1:]) + self.weights[0]
+    def predict(self, X):
+        summation = np.dot(X, self.weights) + self.bias
         return self.activation_func(summation)
 
-    def train(self, training_inputs, labels):
-        for _ in range(100):  # number of epochs could be parameterized
-            for inputs, label in zip(training_inputs, labels):
-                prediction = self.predict(inputs)
-                self.weights[1:] += self.learning_rate * (label - prediction) * inputs
-                self.weights[0] += self.learning_rate * (label - prediction)
+    def fit(self, X, y, iterations=100, visualization_func=None, count_graphics=1):
+        for i in range(1, iterations+1):
+            for xx, yy in zip(X, y):
+                prediction = self.predict(xx)
+                self.weights += self.learning_rate * (yy - prediction) * xx
+                self.bias += self.learning_rate * (yy - prediction)
+
+            if i % (iterations // count_graphics) == 0:
+                print(f"Iteration {i}")
+                if visualization_func is not None:
+                    visualization_func(self, X, y, i)

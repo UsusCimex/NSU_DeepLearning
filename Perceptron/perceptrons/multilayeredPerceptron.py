@@ -14,9 +14,6 @@ class MultilayeredPerceptron:
         elif activation == "relu":
             self.activation_func = relu.func
             self.activation_func_prime = relu.prime
-        elif activation == "step":
-            self.activation_func = step.func
-            # Замечание: у ступенчатой функции нет производной
         elif activation == "tanh":
             self.activation_func = tanh.func
             self.activation_func_prime = tanh.prime
@@ -65,19 +62,19 @@ class MultilayeredPerceptron:
         self.weights = [w-(self.learning_rate/len(X))*nw for w, nw in zip(self.weights, nabla_w)]
         self.biases = [b - (self.learning_rate / len(X)) * nb for b, nb in zip(self.biases, nabla_b)]
 
-    def fit(self, X, y, iterations=10000, visualization_func=None, count_graphics=4):
+    def fit(self, X, y, iterations=10000, visualization_func=None, count_graphics=1):
         # Обучение модели
         # print("X:" + str(X.shape))
         # print("y:" + str(y.shape))
         loss_history = []
-        for i in range(iterations + 1):
+        for i in range(1, iterations + 1):
             # Прямое распространение
             activations, zs = self.forward(X)
             # Вычисление потерь
             loss = self.loss(y, activations[-1])
             loss_history.append(loss)
 
-            if i != 0 and i % (iterations // count_graphics) == 0:
+            if i % (iterations // count_graphics) == 0:
                 print(f"Iteration {i}, Loss: {loss}")
                 if visualization_func is not None:
                     visualization_func(self, X, y, i, loss)
