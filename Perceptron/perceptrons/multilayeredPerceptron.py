@@ -64,8 +64,6 @@ class MultilayeredPerceptron:
 
     def fit(self, X, y, iterations=10000, visualization_func=None, count_graphics=1):
         # Обучение модели
-        # print("X:" + str(X.shape))
-        # print("y:" + str(y.shape))
         loss_history = []
         for i in range(1, iterations + 1):
             # Прямое распространение

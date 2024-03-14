@@ -32,4 +32,3 @@ class ElementaryPerceptron:
                 print(f"Iteration {i}")
                 if visualization_func is not None:
                     visualization_func(self, X, y, i)
-#danil is not gay!! I love his dick very much
