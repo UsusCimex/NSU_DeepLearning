@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 def main():
     np.random.seed(21212)
 
-    dataset_choice = 'xor'
+    dataset_choice = 'circle'
     activation_func = 'sigmoid'
     points = 200
     noise = 0
@@ -28,9 +28,9 @@ def main():
         return
     # plot_data(X,y)
 
-    # perc = Perceptron([2,8,8,1], 1.1, activation_func)
+    perc = Perceptron([2,8,8,1], 1.1, activation_func)
     # perc = ElementaryPerceptron(0.1, activation_func)
-    perc = PerceptronElementaryEnsemble(['sigmoid', 'step', 'sigmoid', 'step'], [0.1, 0.1, 0.1, 0.1])
+    # perc = PerceptronElementaryEnsemble(['sigmoid', 'step', 'sigmoid', 'step', 'sigmoid', 'step'], [0.1, 0.2, 0.4, 0.8, 1, 1.6])
     if (display_confussion_matrix): # Show confusion matrix
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=tesing_percent, random_state=42)
         loss_history = perc.fit(X_train, y_train, iterations=iterations, visualization_func=plot_decision_boundary, count_graphics=count_graphics)
