@@ -55,14 +55,14 @@ class MultilayeredPerceptron:
             z = zs[-l]
             sp = self.activation_func_prime(z)
             delta = np.dot(self.weights[-l+1].T, delta) * sp
-            nabla_b[-l] = np.sum(delta) 
+            nabla_b[-l] = np.sum(delta)
             nabla_w[-l] = np.dot(delta, activations[-l-1].T)
         
         # Обновление весов и смещений
-        self.weights = [w-(self.learning_rate/len(X))*nw for w, nw in zip(self.weights, nabla_w)]
+        self.weights = [w - (self.learning_rate / len(X)) * nw for w, nw in zip(self.weights, nabla_w)]
         self.biases = [b - (self.learning_rate / len(X)) * nb for b, nb in zip(self.biases, nabla_b)]
 
-    def fit(self, X, y, iterations=10000, visualization_func=None, count_graphics=1):
+    def fit(self, X, y, iterations=10000, visualization_graph_func=None, count_graphics=1, visualization_loss_func=None):
         # Обучение модели
         loss_history = []
         for i in range(1, iterations + 1):
@@ -74,12 +74,13 @@ class MultilayeredPerceptron:
 
             if i % (iterations // count_graphics) == 0:
                 print(f"Iteration {i}, Loss: {loss}")
-                if visualization_func is not None:
-                    visualization_func(self, X, y, i, loss)
+                if visualization_graph_func is not None:
+                    visualization_graph_func(self, X, y, i, loss)
 
             # Обратное распространение для обновления весов и смещений
             self.backpropagation(X, y)
-        return loss_history
+        if visualization_loss_func is not None:
+            visualization_loss_func(loss_history)
 
     def loss(self, y_true, y_pred):
         # Функция потерь (cross-entropy)

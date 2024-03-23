@@ -12,6 +12,7 @@ class ElementaryPerceptron:
         self.learning_rate = learning_rate
         if activation == "sigmoid":
             self.activation_func = sigmoid.func
+            self.activation_func_prime = sigmoid.prime
         elif activation == "step":
             self.activation_func = step.func
         else:
@@ -21,14 +22,23 @@ class ElementaryPerceptron:
         summation = np.dot(X, self.weights) + self.bias
         return self.activation_func(summation)
 
-    def fit(self, X, y, iterations=100, visualization_func=None, count_graphics=1):
+    def fit(self, X, y, iterations=100, visualization_graph_func=None, count_graphics=1, visualization_loss_func=None):
         for i in range(1, iterations+1):
             for xx, yy in zip(X, y):
                 prediction = self.predict(xx)
-                self.weights += self.learning_rate * (yy - prediction) * xx
-                self.bias += self.learning_rate * (yy - prediction)
+                error = yy - prediction
+                error = yy - self.activation_func_prime(xx) if self.activation_func_prime is not None else None
+                self.weights += self.learning_rate * error * xx
+                self.bias += self.learning_rate * error
 
             if i % (iterations // count_graphics) == 0:
                 print(f"Iteration {i}")
-                if visualization_func is not None:
-                    visualization_func(self, X, y, i)
+                if visualization_graph_func is not None:
+                    visualization_graph_func(self, X, y, i)
+
+    def fit_gradient(self, X, y, weights, bias, learning_rate):
+        predictions = np.dot(X, weights) + bias
+        errors = y - predictions
+        weights += learning_rate * np.dot(X.T, errors)
+        bias += learning_rate * np.sum(errors)
+        return weights, bias

@@ -40,3 +40,16 @@ def plot_data(X, y):
     plt.title('Data points')
     plt.legend()
     plt.show()
+
+def plot_lines(X, y, lines):
+    plt.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap='viridis', edgecolors='k')
+    for i, line in enumerate(lines):
+        slope, intercept = line
+        x_vals = np.array([min(X[:, 0]), max(X[:, 0])])
+        y_vals = slope * x_vals + intercept
+        plt.plot(x_vals, y_vals, label=f'Model {i+1}')
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.title('Data points with Lines')
+    plt.legend()
+    plt.show()
