@@ -35,10 +35,3 @@ class ElementaryPerceptron:
                 print(f"Iteration {i}")
                 if visualization_graph_func is not None:
                     visualization_graph_func(self, X, y, i)
-
-    def fit_gradient(self, X, y, weights, bias, learning_rate):
-        predictions = np.dot(X, weights) + bias
-        errors = y - predictions
-        weights += learning_rate * np.dot(X.T, errors)
-        bias += learning_rate * np.sum(errors)
-        return weights, bias
