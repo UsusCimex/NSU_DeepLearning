@@ -4,7 +4,7 @@ from matplotlib.colors import LinearSegmentedColormap
 
 cm = LinearSegmentedColormap.from_list('blue_red', ['red', 'blue'], N=2)
 
-def plot_decision_boundary(model, X, y, iteration=None, loss=None):
+def visualize_graph(model, X, y, iteration=None, loss=None):
     # Задаем диапазон значений и сетку
     x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
@@ -38,11 +38,10 @@ def plot_data(X, y):
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.title('Data points')
-    plt.legend()
     plt.show()
 
 def plot_lines(X, y, lines):
-    plt.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap='viridis', edgecolors='k')
+    plt.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap=cm, edgecolors='k')
     for i, line in enumerate(lines):
         slope, intercept = line
         x_vals = np.array([min(X[:, 0]), max(X[:, 0])])

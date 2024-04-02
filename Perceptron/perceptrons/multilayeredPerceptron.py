@@ -30,8 +30,6 @@ class MultilayeredPerceptron:
         activations = [X.T]
         zs = []
         for i, (b, w) in enumerate(zip(self.biases, self.weights)):
-            # print(f"Layer {i}:")
-            # print(f"Activations shape: {activations[-1].shape}, Weights shape: {w.shape}, Biases shape: {b.shape}")
             z = np.dot(w, activations[-1]) + b
             a = self.activation_func(z)
             zs.append(z)
@@ -52,9 +50,7 @@ class MultilayeredPerceptron:
 
         # Обратное распространение ошибки
         for l in range(2, self.num_layers):
-            z = zs[-l]
-            sp = self.activation_func_prime(z)
-            delta = np.dot(self.weights[-l+1].T, delta) * sp
+            delta = np.dot(self.weights[-l+1].T, delta) * self.activation_func_prime(zs[-l])
             nabla_b[-l] = np.sum(delta)
             nabla_w[-l] = np.dot(delta, activations[-l-1].T)
         
@@ -62,7 +58,7 @@ class MultilayeredPerceptron:
         self.weights = [w - (self.learning_rate / len(X)) * nw for w, nw in zip(self.weights, nabla_w)]
         self.biases = [b - (self.learning_rate / len(X)) * nb for b, nb in zip(self.biases, nabla_b)]
 
-    def fit(self, X, y, iterations=10000, visualization_graph_func=None, count_graphics=1, visualization_loss_func=None):
+    def fit(self, X, y, iterations=100, visualization_graph_func=None, count_graphics=1, visualization_loss_func=None):
         # Обучение модели
         loss_history = []
         for i in range(1, iterations + 1):
