@@ -3,20 +3,27 @@ import numpy as np
 from matplotlib.colors import LinearSegmentedColormap
 
 cm = LinearSegmentedColormap.from_list('blue_red', ['red', 'blue'], N=2)
-
 def visualize_graph(model, X, y, iteration=None, loss=None):
-    # Задаем диапазон значений и сетку
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    # Setting the range of values and the grid
+    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
     xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.01),
-                            np.arange(y_min, y_max, 0.01))
+                         np.arange(y_min, y_max, 0.01))
 
     # Predict over the grid
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
 
+    # Ensure contour levels are increasing and distinct
+    levels = np.linspace(Z.min(), Z.max(), 3)
+    if len(np.unique(levels)) < len(levels):
+        if Z.max() == Z.min():
+            levels = np.array([Z.min(), Z.min() + 1e-4, Z.min() + 2e-4])  # Add small distinct values
+        else:
+            levels = np.unique(levels)  # Remove duplicate levels
+
     # Plotting
-    plt.contourf(xx, yy, Z, alpha=0.8, levels=np.linspace(Z.min(), Z.max(), 3), cmap=plt.cm.RdBu)
+    plt.contourf(xx, yy, Z, alpha=0.8, levels=levels, cmap=plt.cm.RdBu)
     plt.scatter(X[:, 0], X[:, 1], c=y, s=30, cmap=cm, edgecolors='k')
     plt.title(f"Iteration {iteration}, Loss: {loss}")
     plt.show()
@@ -50,5 +57,6 @@ def plot_lines(X, y, lines):
     plt.xlabel('X')
     plt.ylabel('Y')
     plt.title('Data points with Lines')
+    plt.axis([-3, 3, -3, 3])
     plt.legend()
     plt.show()

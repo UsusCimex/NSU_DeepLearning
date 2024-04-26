@@ -17,28 +17,34 @@ class ElementaryPerceptron:
         elif activation == "step":
             self.activation_func = step.func
             self.activation_func_prime = lambda x : 1
+        elif activation == "relu":
+            self.activation_func = relu.func
+            self.activation_func_prime = relu.prime
         else:
             raise Exception("Wrong activation function name!")
 
     def predict(self, X):
         summation = np.dot(X, self.weights) + self.bias
-        return self.activation_func(summation)
+        return (self.activation_func(summation) > 0.5).astype(int)
 
     def fit(self, X, y, iterations=100, visualization_graph_func=None, count_graphics=1, visualization_loss_func=None):
         for i in range(1, iterations+1):
             for xx, yy in zip(X, y):
-                if (self.method == 'gradient'):
-                    predicted = self.predict(xx)
-                    self.weights += self.learning_rate * (yy - predicted) * self.activation_func_prime(predicted) * xx
-                    self.bias += self.learning_rate * (yy - predicted) * self.activation_func_prime(predicted)
+                summation = np.dot(xx, self.weights) + self.bias
+                activation = self.activation_func(summation)
+                if self.method == 'gradient':
+                    error = yy - activation
+                    gradient = error * self.activation_func_prime(summation)
+                    self.weights += self.learning_rate * gradient * xx
+                    self.bias += self.learning_rate * gradient
                 else:
-                    prediction = self.predict(xx)
-                    if (prediction > 0 and yy == 0):
-                        self.weights -= self.learning_rate * xx
-                    elif (prediction <= 0 and yy == 1):
-                        self.weights += self.learning_rate * xx
+                    prediction = int(activation > 0.5)
+                    if prediction != yy:
+                        update = self.learning_rate * (yy - prediction)
+                        self.weights += update * xx
+                        self.bias += update
 
             if i % (iterations // count_graphics) == 0:
-                print(f"Iteration {i}")
-                if visualization_graph_func is not None:
+                print(f"Iteration {i}: Weights={self.weights}, Bias={self.bias}")
+                if visualization_graph_func:
                     visualization_graph_func(self, X, y, iteration=i)
