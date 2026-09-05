@@ -1,0 +1,46 @@
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[english,russian]{babel}
+\else
+  \usepackage{fontspec}
+  \setmainfont{DejaVu Serif}
+  \setmonofont{DejaVu Sans Mono}
+  \renewcommand{\contentsname}{Содержание}
+  \renewcommand{\figurename}{Рис.}
+  \renewcommand{\tablename}{Таблица}
+\fi
+
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\Exp}{\mathsf{M}}
+\newcommand{\Var}{\mathsf{D}}
+\newcommand{\PP}{\mathsf{P}}
+\newcommand{\dens}{\mathrm{p}}
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\xs}[1]{x^{(#1)}}
+\newcommand{\ys}[1]{y^{(#1)}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\est}[1]{\tilde{#1}}
+\newcommand{\zad}[1]{\medskip\noindent\textbf{Задание #1.}\quad}
+\newcommand{\prov}{\smallskip\noindent\textit{Проверка:}\ }
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\newtheorem{statement}{Утверждение}
+\theoremstyle{plain}
+\newtheorem{lemma}{Лемма}
+
+% Список с русскими буквенными метками
+\newenvironment{ruslist}
+  {\begin{itemize}[label={},leftmargin=2.2em,itemsep=2pt,topsep=3pt]}
+  {\end{itemize}}
