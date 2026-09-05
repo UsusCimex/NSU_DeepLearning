@@ -16,6 +16,7 @@
 |---|------|---------|
 | 1 | Классификация растровых изображений с помощью kNN | [labs/lab-01-knn-raster](labs/lab-01-knn-raster) |
 | 2 | Идентификация выбросов с помощью kNN и ODIN | [labs/lab-02-outliers-odin](labs/lab-02-outliers-odin) |
+| 3 | Полиномиальная регрессия. Регуляризация. Кросс-валидация | [labs/lab-03-poly-regression](labs/lab-03-poly-regression) |
 
 ## Сборка PDF
 
