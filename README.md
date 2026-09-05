@@ -6,6 +6,7 @@
 |---|------|---------|
 | 1 | Элементы теории вероятностей | [tasks/task-01-probability](tasks/task-01-probability) |
 | 2 | Метод ближайшего соседа | [tasks/task-02-knn](tasks/task-02-knn) |
+| 3 | Метод наименьших квадратов | [tasks/task-03-lsm](tasks/task-03-lsm) |
 
 ## Сборка PDF
 
