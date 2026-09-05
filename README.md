@@ -20,6 +20,7 @@
 | 4 | Элементарный перцептрон. Ансамбль перцептронов | [labs/lab-04-perceptron](labs/lab-04-perceptron) |
 | 5 | Многослойный перцептрон для регрессии | [labs/lab-05-mlp-regression](labs/lab-05-mlp-regression) |
 | 6 | Свёрточные нейронные сети. Классификация изображений | [labs/lab-06-cnn](labs/lab-06-cnn) |
+| 7 | Остаточные свёрточные сети. Дроп-аут. Батч-нормализация | [labs/lab-07-resnet](labs/lab-07-resnet) |
 
 ## Сборка PDF
 
