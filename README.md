@@ -19,6 +19,7 @@
 | 3 | Полиномиальная регрессия. Регуляризация. Кросс-валидация | [labs/lab-03-poly-regression](labs/lab-03-poly-regression) |
 | 4 | Элементарный перцептрон. Ансамбль перцептронов | [labs/lab-04-perceptron](labs/lab-04-perceptron) |
 | 5 | Многослойный перцептрон для регрессии | [labs/lab-05-mlp-regression](labs/lab-05-mlp-regression) |
+| 6 | Свёрточные нейронные сети. Классификация изображений | [labs/lab-06-cnn](labs/lab-06-cnn) |
 
 ## Сборка PDF
 
