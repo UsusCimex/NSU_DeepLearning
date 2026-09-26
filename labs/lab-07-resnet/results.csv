@@ -1,32 +1,35 @@
-stage,dataset,kind,n_blocks,channels,bn,dropout,lr,head,train_acc,test_acc,params,time
-глубина,FashionMNIST,plain,2,24,True,0.0,0.05,(),0.86475,0.8353333333333334,63562,1.6
-глубина,FashionMNIST,plain,4,24,True,0.0,0.05,(),0.87475,0.842,115834,2.1
-глубина,FashionMNIST,plain,6,24,True,0.0,0.05,(),0.8815,0.8246666666666667,168106,2.8
-глубина,FashionMNIST,plain,8,24,True,0.0,0.05,(),0.82225,0.8146666666666667,220378,3.4
-глубина,FashionMNIST,residual,2,24,True,0.0,0.05,(),0.86925,0.8426666666666667,63562,1.4
-глубина,FashionMNIST,residual,4,24,True,0.0,0.05,(),0.88825,0.8533333333333334,115834,2.1
-глубина,FashionMNIST,residual,6,24,True,0.0,0.05,(),0.87225,0.8226666666666667,168106,2.8
-глубина,FashionMNIST,residual,8,24,True,0.0,0.05,(),0.883,0.8446666666666667,220378,3.5
-глубина,FashionMNIST,bottleneck,2,24,True,0.0,0.05,(),0.8395,0.8113333333333334,14674,1.6
-глубина,FashionMNIST,bottleneck,4,24,True,0.0,0.05,(),0.82525,0.812,18058,2.4
-глубина,FashionMNIST,bottleneck,6,24,True,0.0,0.05,(),0.8585,0.8113333333333334,21442,3.3
-глубина,FashionMNIST,bottleneck,8,24,True,0.0,0.05,(),0.859,0.822,24826,4.1
-bn и dropout,FashionMNIST,residual,4,24,True,0.0,0.05,(),0.88875,0.8473333333333334,115834,2.2
-bn и dropout,FashionMNIST,residual,4,24,True,0.2,0.05,(),0.83675,0.8246666666666667,115834,2.3
-bn и dropout,FashionMNIST,residual,4,24,True,0.5,0.05,(),0.81225,0.7933333333333333,115834,2.3
-bn и dropout,FashionMNIST,residual,4,24,False,0.0,0.05,(),0.83175,0.8113333333333334,115114,1.6
-bn и dropout,FashionMNIST,residual,4,24,False,0.2,0.05,(),0.8185,0.8046666666666666,115114,1.7
-bn и dropout,FashionMNIST,residual,4,24,False,0.5,0.05,(),0.779,0.7586666666666667,115114,1.7
-каналы и lr,FashionMNIST,residual,4,16,True,0.0,0.01,(),0.853,0.8093333333333333,51882,2.1
-каналы и lr,FashionMNIST,residual,4,16,True,0.0,0.05,(),0.80975,0.8026666666666666,51882,2.1
-каналы и lr,FashionMNIST,residual,4,16,True,0.0,0.1,(),0.8635,0.8333333333333334,51882,2.0
-каналы и lr,FashionMNIST,residual,4,24,True,0.0,0.01,(),0.7655,0.788,115834,2.2
-каналы и lr,FashionMNIST,residual,4,24,True,0.0,0.05,(),0.85475,0.834,115834,2.2
-каналы и lr,FashionMNIST,residual,4,24,True,0.0,0.1,(),0.872,0.8453333333333334,115834,2.1
-каналы и lr,FashionMNIST,residual,4,32,True,0.0,0.01,(),0.85525,0.814,205130,2.4
-каналы и lr,FashionMNIST,residual,4,32,True,0.0,0.05,(),0.8315,0.8086666666666666,205130,2.4
-каналы и lr,FashionMNIST,residual,4,32,True,0.0,0.1,(),0.9045,0.8533333333333334,205130,2.3
-голова,FashionMNIST,residual,4,32,True,0.0,0.1,(),0.89375,0.8393333333333334,205130,2.3
-голова,FashionMNIST,residual,4,32,True,0.0,0.1,"(64,)",0.8075,0.8033333333333333,209290,2.3
-голова,FashionMNIST,residual,4,32,True,0.0,0.1,"(128,)",0.84575,0.8093333333333333,214090,2.4
-голова,FashionMNIST,residual,4,32,True,0.0,0.1,"(128, 64)",0.77725,0.7666666666666667,221706,2.5
+stage,dataset,kind,n_blocks,channels,ks,bn,dropout,lr,head,train_acc,val_acc,params
+глубина,FashionMNIST,plain,2,24,3,True,0.0,0.05,(),0.876,0.8393333333333334,63562
+глубина,FashionMNIST,plain,4,24,3,True,0.0,0.05,(),0.8825,0.8486666666666667,115834
+глубина,FashionMNIST,plain,6,24,3,True,0.0,0.05,(),0.855,0.8326666666666667,168106
+глубина,FashionMNIST,plain,8,24,3,True,0.0,0.05,(),0.846,0.8333333333333334,220378
+глубина,FashionMNIST,residual,2,24,3,True,0.0,0.05,(),0.8645,0.8413333333333334,63562
+глубина,FashionMNIST,residual,4,24,3,True,0.0,0.05,(),0.83,0.8166666666666667,115834
+глубина,FashionMNIST,residual,6,24,3,True,0.0,0.05,(),0.85275,0.8326666666666667,168106
+глубина,FashionMNIST,residual,8,24,3,True,0.0,0.05,(),0.85925,0.848,220378
+глубина,FashionMNIST,bottleneck,2,24,3,True,0.0,0.05,(),0.83975,0.8233333333333334,14674
+глубина,FashionMNIST,bottleneck,4,24,3,True,0.0,0.05,(),0.84725,0.828,18058
+глубина,FashionMNIST,bottleneck,6,24,3,True,0.0,0.05,(),0.81375,0.7953333333333333,21442
+глубина,FashionMNIST,bottleneck,8,24,3,True,0.0,0.05,(),0.8545,0.814,24826
+bn и dropout,FashionMNIST,residual,8,24,3,True,0.0,0.05,(),0.85925,0.848,220378
+bn и dropout,FashionMNIST,residual,8,24,3,True,0.2,0.05,(),0.8485,0.8226666666666667,220378
+bn и dropout,FashionMNIST,residual,8,24,3,True,0.5,0.05,(),0.828,0.8166666666666667,220378
+bn и dropout,FashionMNIST,residual,8,24,3,False,0.0,0.05,(),0.82525,0.818,219082
+bn и dropout,FashionMNIST,residual,8,24,3,False,0.2,0.05,(),0.832,0.824,219082
+bn и dropout,FashionMNIST,residual,8,24,3,False,0.5,0.05,(),0.8075,0.802,219082
+каналы и lr,FashionMNIST,residual,8,16,3,True,0.0,0.01,(),0.90075,0.8386666666666667,98538
+каналы и lr,FashionMNIST,residual,8,16,3,True,0.0,0.05,(),0.859,0.8386666666666667,98538
+каналы и lr,FashionMNIST,residual,8,16,3,True,0.0,0.1,(),0.85025,0.83,98538
+каналы и lr,FashionMNIST,residual,8,24,3,True,0.0,0.01,(),0.8975,0.8446666666666667,220378
+каналы и lr,FashionMNIST,residual,8,24,3,True,0.0,0.05,(),0.85925,0.848,220378
+каналы и lr,FashionMNIST,residual,8,24,3,True,0.0,0.1,(),0.82425,0.8173333333333334,220378
+каналы и lr,FashionMNIST,residual,8,32,3,True,0.0,0.01,(),0.9145,0.8533333333333334,390602
+каналы и lr,FashionMNIST,residual,8,32,3,True,0.0,0.05,(),0.89425,0.866,390602
+каналы и lr,FashionMNIST,residual,8,32,3,True,0.0,0.1,(),0.8445,0.83,390602
+ядро,FashionMNIST,residual,8,32,3,True,0.0,0.05,(),0.89425,0.866,390602
+ядро,FashionMNIST,residual,8,32,5,True,0.0,0.05,(),0.87175,0.846,1045962
+ядро,FashionMNIST,residual,8,32,7,True,0.0,0.05,(),0.837,0.8146666666666667,2029002
+голова,FashionMNIST,residual,8,32,3,True,0.0,0.05,(),0.89425,0.866,390602
+голова,FashionMNIST,residual,8,32,3,True,0.0,0.05,"(64,)",0.83125,0.82,394762
+голова,FashionMNIST,residual,8,32,3,True,0.0,0.05,"(128,)",0.856,0.846,399562
+голова,FashionMNIST,residual,8,32,3,True,0.0,0.05,"(128, 64)",0.7845,0.782,407178

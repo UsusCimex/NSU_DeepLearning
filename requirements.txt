@@ -1,7 +1,7 @@
 numpy
-scipy
+pandas
 matplotlib
 scikit-learn
+scikit-image
 torch
-torchvision
 jupyter
