@@ -14,3 +14,7 @@ venv/
 *.xdv
 
 data/
+
+CLAUDE.md
+PLAN.md
+.claude/
