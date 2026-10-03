@@ -14,14 +14,13 @@
 
 | № | Тема | Решение |
 |---|------|---------|
-| 1 | Классификация растровых изображений с помощью kNN | [labs/lab-01-knn-raster](labs/lab-01-knn-raster) |
-| 2 | Идентификация выбросов с помощью kNN и ODIN | [labs/lab-02-outliers-odin](labs/lab-02-outliers-odin) |
-| 3 | Полиномиальная регрессия. Регуляризация. Кросс-валидация | [labs/lab-03-poly-regression](labs/lab-03-poly-regression) |
-| 4 | Элементарный перцептрон. Ансамбль перцептронов | [labs/lab-04-perceptron](labs/lab-04-perceptron) |
-| 5 | Многослойный перцептрон для регрессии | [labs/lab-05-mlp-regression](labs/lab-05-mlp-regression) |
-| 6 | Свёрточные нейронные сети. Классификация изображений | [labs/lab-06-cnn](labs/lab-06-cnn) |
-| 7 | Остаточные свёрточные сети. Дроп-аут. Батч-нормализация | [labs/lab-07-resnet](labs/lab-07-resnet) |
-| 8 | Автоэнкодеры | [labs/lab-08-autoencoders](labs/lab-08-autoencoders) |
+| 1 | Классификация растровых изображений с помощью kNN. Идентификация выбросов с помощью kNN и ODIN | [labs/lab-01-knn](labs/lab-01-knn) |
+| 2 | Полиномиальная регрессия. Регуляризация. Кросс-валидация | [labs/lab-02-poly-regression](labs/lab-02-poly-regression) |
+| 3 | Элементарный перцептрон. Ансамбль элементарных перцептронов | [labs/lab-03-perceptron](labs/lab-03-perceptron) |
+| 4 | Многослойный перцептрон для решения задачи регрессии | [labs/lab-04-mlp-regression](labs/lab-04-mlp-regression) |
+| 5 | Свёрточные нейронные сети. Классификация изображений | [labs/lab-05-cnn](labs/lab-05-cnn) |
+| 6 | Остаточные свёрточные сети. Дроп-аут. Батч-нормализация | [labs/lab-06-resnet](labs/lab-06-resnet) |
+| 7 | Автоэнкодеры | [labs/lab-07-autoencoders](labs/lab-07-autoencoders) |
 
 ## Сборка PDF
 
