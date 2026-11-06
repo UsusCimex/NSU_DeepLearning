@@ -53,12 +53,6 @@ class Sequential(Module):
     def parameters(self):
         return [p for layer in self.layers for p in layer.parameters()]
 
-    def __getitem__(self, i):
-        return self.layers[i]
-
-    def __len__(self):
-        return len(self.layers)
-
     def __repr__(self):
         lines = [f'  ({i}): {layer!r}' for i, layer in enumerate(self.layers)]
         return 'Sequential(\n' + '\n'.join(lines) + '\n)'

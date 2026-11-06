@@ -29,9 +29,5 @@ class Module:
     def parameters(self):
         return []
 
-    def zero_grad(self):
-        for p in self.parameters():
-            p.grad.fill(0.0)
-
     def __repr__(self):
         return f'{type(self).__name__}()'

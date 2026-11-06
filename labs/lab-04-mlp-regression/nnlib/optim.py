@@ -1,23 +1,17 @@
-"""Оптимизатор: градиентный спуск, по желанию с моментом."""
-
-import numpy as np
+"""Оптимизатор: градиентный спуск."""
 
 
 class SGD:
-    """Шаг v <- momentum * v + grad, w <- w - lr * v.
-    При momentum = 0 это обычный градиентный спуск w <- w - lr * grad."""
+    """Шаг градиентного спуска w <- w - lr * grad для каждого параметра."""
 
-    def __init__(self, parameters, lr, momentum=0.0):
+    def __init__(self, parameters, lr):
         self.parameters = list(parameters)
-        self.lr, self.momentum = lr, momentum
-        self.velocity = [np.zeros_like(p.data) for p in self.parameters]
+        self.lr = lr
 
     def zero_grad(self):
         for p in self.parameters:
             p.grad.fill(0.0)
 
     def step(self):
-        for p, v in zip(self.parameters, self.velocity):
-            v *= self.momentum
-            v += p.grad
-            p.data -= self.lr * v
+        for p in self.parameters:
+            p.data -= self.lr * p.grad
