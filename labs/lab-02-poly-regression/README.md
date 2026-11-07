@@ -1,3 +1,3 @@
 # Лабораторная 2. Полиномиальная регрессия. Регуляризация. Кросс-валидация
 
-[Ноутбук](poly_regression.ipynb), замеры в `results.csv`.
+[Ноутбук](poly_regression.ipynb), библиотека в [`nnlib`](nnlib), замеры в `results.csv`.
