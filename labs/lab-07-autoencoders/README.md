@@ -1,3 +1,3 @@
 # Лабораторная 7. Автоэнкодеры
 
-[Ноутбук](autoencoders.ipynb), замеры в `results.csv`.
+[Ноутбук](autoencoders.ipynb), библиотека в [`nnlib`](nnlib), замеры в `results.csv`.
