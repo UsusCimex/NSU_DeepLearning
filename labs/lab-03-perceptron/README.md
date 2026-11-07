@@ -1,3 +1,3 @@
 # Лабораторная 3. Элементарный перцептрон. Ансамбль элементарных перцептронов
 
-[Ноутбук](perceptron_mnist.ipynb), замеры в `results.csv`.
+[Ноутбук](perceptron_mnist.ipynb), библиотека в [`nnlib`](nnlib), замеры в `results.csv`.
