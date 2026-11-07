@@ -2,7 +2,7 @@
 
 
 class SGD:
-    """Шаг градиентного спуска w <- w - lr * grad для каждого параметра."""
+    """Градиентный спуск: на каждом шаге из параметра вычитается lr * grad."""
 
     def __init__(self, parameters, lr):
         self.parameters = list(parameters)
