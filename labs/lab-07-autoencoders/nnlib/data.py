@@ -26,8 +26,11 @@ def download_file(urls, path):
 
 def read_idx(path):
     """Файл IDX: магическое число, размеры по осям, затем байты данных."""
-    opener = gzip.open if path.suffix == '.gz' else open
-    with opener(path, 'rb') as f:
+    if path.suffix == '.gz':
+        f = gzip.GzipFile(path, 'rb')
+    else:
+        f = open(path, 'rb')
+    with f:
         # '>I' - целое без знака из 4 байт, старший байт первым;
         # младший байт магического числа - число осей
         magic, = struct.unpack('>I', f.read(4))
