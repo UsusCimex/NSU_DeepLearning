@@ -1,4 +1,4 @@
-stage,kind,n_blocks,channels,ks,bn,dropout,head,down,lr,train_acc,val_acc,best_epoch,params
+stage,kind,n_blocks,channels,kernel_size,bn,dropout,head,down,lr,train_acc,val_acc,best_epoch,params
 глубина,plain,2,16,3,True,0.0,(),1,0.05,0.55,0.4985,9,28842
 глубина,plain,4,16,3,True,0.0,(),1,0.05,0.557,0.484,9,52170
 глубина,plain,8,16,3,True,0.0,(),1,0.05,0.432,0.4085,9,98826
