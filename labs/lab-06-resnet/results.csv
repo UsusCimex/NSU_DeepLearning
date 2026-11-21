@@ -1,4 +1,4 @@
-stage,kind,n_blocks,channels,kernel_size,bn,dropout,head,down,lr,train_acc,val_acc,best_epoch,params
+stage,kind,n_blocks,channels,kernel_size,batchnorm,dropout,head,down,lr,train_acc,val_acc,best_epoch,params
 глубина,plain,2,16,3,True,0.0,(),1,0.05,0.55,0.4985,9,28842
 глубина,plain,4,16,3,True,0.0,(),1,0.05,0.557,0.484,9,52170
 глубина,plain,8,16,3,True,0.0,(),1,0.05,0.432,0.4085,9,98826
@@ -8,12 +8,12 @@ stage,kind,n_blocks,channels,kernel_size,bn,dropout,head,down,lr,train_acc,val_a
 глубина,bottleneck,2,16,3,True,0.0,(),1,0.05,0.492,0.4595,9,7090
 глубина,bottleneck,4,16,3,True,0.0,(),1,0.05,0.483,0.4635,8,8666
 глубина,bottleneck,8,16,3,True,0.0,(),1,0.05,0.509,0.4425,9,11818
-bn и dropout,residual,4,16,3,True,0.0,(),1,0.05,0.67,0.545,10,52170
-bn и dropout,residual,4,16,3,True,0.2,(),1,0.05,0.519,0.508,8,52170
-bn и dropout,residual,4,16,3,True,0.5,(),1,0.05,0.463,0.448,9,52170
-bn и dropout,residual,4,16,3,False,0.0,(),1,0.05,0.492,0.4575,10,51690
-bn и dropout,residual,4,16,3,False,0.2,(),1,0.05,0.484,0.4635,8,51690
-bn и dropout,residual,4,16,3,False,0.5,(),1,0.05,0.48,0.453,9,51690
+batchnorm и dropout,residual,4,16,3,True,0.0,(),1,0.05,0.67,0.545,10,52170
+batchnorm и dropout,residual,4,16,3,True,0.2,(),1,0.05,0.519,0.508,8,52170
+batchnorm и dropout,residual,4,16,3,True,0.5,(),1,0.05,0.463,0.448,9,52170
+batchnorm и dropout,residual,4,16,3,False,0.0,(),1,0.05,0.492,0.4575,10,51690
+batchnorm и dropout,residual,4,16,3,False,0.2,(),1,0.05,0.484,0.4635,8,51690
+batchnorm и dropout,residual,4,16,3,False,0.5,(),1,0.05,0.48,0.453,9,51690
 каналы и lr,residual,4,16,3,True,0.0,(),1,0.01,0.621,0.5475,8,52170
 каналы и lr,residual,4,16,3,True,0.0,(),1,0.05,0.67,0.545,10,52170
 каналы и lr,residual,4,16,3,True,0.0,(),1,0.1,0.593,0.521,10,52170
