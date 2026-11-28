@@ -20,7 +20,8 @@ class PolynomialRegression:
     регуляризации."""
 
     def __init__(self, degree, lam=0.0):
-        self.degree, self.lam = degree, lam
+        self.degree = degree
+        self.lam = lam
 
     def scale(self, x):
         """Перенос отрезка [x_min, x_max] обучающей выборки в [-1, 1]. Многочлен
@@ -29,7 +30,9 @@ class PolynomialRegression:
         return 2 * (x - self.x_min) / (self.x_max - self.x_min) - 1
 
     def fit(self, x, y):
-        self.x_min, self.x_max = x.min(), x.max()
+        """Коэффициенты w по выборке (x, y); возвращает саму модель."""
+        self.x_min = x.min()
+        self.x_max = x.max()
         A, b = normal_system(self.scale(x), y, self.degree)
         for j in range(1, self.degree + 1):
             A[j, j] += self.lam
@@ -39,4 +42,7 @@ class PolynomialRegression:
     def predict(self, x):
         """Значения многочлена в точках x."""
         t = self.scale(x)
-        return sum(self.w[j] * t ** j for j in range(self.degree + 1))
+        result = 0
+        for j in range(self.degree + 1):
+            result = result + self.w[j] * t ** j
+        return result
