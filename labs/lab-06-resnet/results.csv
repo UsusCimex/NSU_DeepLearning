@@ -9,11 +9,11 @@ stage,block,n_blocks,channels,batchnorm,dropout,down_variant,hidden_sizes,lr,epo
 глубина,bottleneck,4,16,True,0.0,1,(),0.05,10,0.542,0.488,7,14410
 глубина,bottleneck,8,16,True,0.0,1,(),0.05,10,0.531,0.473,10,23306
 batchnorm и dropout,residual,4,16,True,0.0,1,(),0.05,10,0.67,0.545,10,52170
-batchnorm и dropout,residual,4,16,True,0.2,1,(),0.05,10,0.519,0.5085,8,52170
-batchnorm и dropout,residual,4,16,True,0.5,1,(),0.05,10,0.463,0.448,9,52170
+batchnorm и dropout,residual,4,16,True,0.2,1,(),0.05,10,0.551,0.521,10,52170
+batchnorm и dropout,residual,4,16,True,0.5,1,(),0.05,10,0.44,0.426,8,52170
 batchnorm и dropout,residual,4,16,False,0.0,1,(),0.05,10,0.492,0.4575,10,51690
-batchnorm и dropout,residual,4,16,False,0.2,1,(),0.05,10,0.484,0.4635,8,51690
-batchnorm и dropout,residual,4,16,False,0.5,1,(),0.05,10,0.48,0.453,9,51690
+batchnorm и dropout,residual,4,16,False,0.2,1,(),0.05,10,0.486,0.452,8,51690
+batchnorm и dropout,residual,4,16,False,0.5,1,(),0.05,10,0.462,0.432,9,51690
 batchnorm и lr,residual,4,16,True,0.0,1,(),0.01,10,0.621,0.5475,8,52170
 batchnorm и lr,residual,4,16,True,0.0,1,(),0.03,10,0.624,0.562,9,52170
 batchnorm и lr,residual,4,16,True,0.0,1,(),0.1,10,0.593,0.521,10,52170
@@ -25,8 +25,8 @@ batchnorm и lr,residual,4,16,False,0.0,1,(),0.1,10,0.498,0.475,10,51690
 batchnorm и lr,residual,4,16,False,0.0,1,(),0.3,10,0.107,0.1095,1,51690
 batchnorm и lr,residual,4,16,False,0.0,1,(),1.0,10,0.102,0.1045,1,51690
 "dropout, 30 эпох",residual,4,16,True,0.0,1,(),0.05,30,0.903,0.6055,30,52170
-"dropout, 30 эпох",residual,4,16,True,0.2,1,(),0.05,30,0.7,0.592,20,52170
-"dropout, 30 эпох",residual,4,16,True,0.5,1,(),0.05,30,0.686,0.603,26,52170
+"dropout, 30 эпох",residual,4,16,True,0.2,1,(),0.05,30,0.781,0.6135,28,52170
+"dropout, 30 эпох",residual,4,16,True,0.5,1,(),0.05,30,0.675,0.585,30,52170
 глубокие сети,plain,4,16,True,0.0,1,(),0.05,20,0.637,0.5415,15,52170
 глубокие сети,plain,8,16,True,0.0,1,(),0.05,20,0.543,0.4775,19,98826
 глубокие сети,plain,16,16,True,0.0,1,(),0.05,20,0.365,0.3315,20,192138
