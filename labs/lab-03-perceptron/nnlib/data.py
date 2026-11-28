@@ -77,22 +77,28 @@ class TensorDataset:
     Индекс может быть числом, срезом или массивом номеров."""
 
     def __init__(self, *arrays):
-        if any(len(a) != len(arrays[0]) for a in arrays):
-            raise ValueError('массивы разной длины')
+        for array in arrays:
+            if len(array) != len(arrays[0]):
+                raise ValueError('массивы разной длины')
         self.arrays = arrays
 
     def __len__(self):
         return len(self.arrays[0])
 
     def __getitem__(self, index):
-        return tuple(a[index] for a in self.arrays)
+        items = []
+        for array in self.arrays:
+            items.append(array[index])
+        return tuple(items)
 
 
 class DataLoader:
     """Батчи выборки по batch_size объектов; при shuffle в каждой эпохе новый порядок."""
 
     def __init__(self, dataset, batch_size=64, shuffle=False):
-        self.dataset, self.batch_size, self.shuffle = dataset, batch_size, shuffle
+        self.dataset = dataset
+        self.batch_size = batch_size
+        self.shuffle = shuffle
 
     def __iter__(self):
         n = len(self.dataset)
